@@ -21,7 +21,6 @@ namespace DemoProject.Controllers
         [HttpGet("GetAll")]
         public async Task<ActionResult<IEnumerable<CustomerDto>>> GetCustomers()
         {
-            _logger.LogInformation($"context.customers is null : {_context.Customers is null} ");
             return Ok((await _context.Customers.ToListAsync()).Select(x => new CustomerDto { Id = x.Id, FirstName = x.FirstName, LastName = x.LastName }));
         }
         [HttpGet("{id}")]
